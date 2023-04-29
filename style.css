@@ -1,0 +1,54 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+ body{
+ background: url("./background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+}
+
+#container{
+display: flex;
+min-height: 100%;
+flex-direction: column;
+}
+
+
+.container__textarea{
+  margin: 150px;
+}
+
+
+.keyboard__title{
+  padding-top: 50px;
+  font-size: 64px;
+  text-align: center;
+}
+
+.keyboard{
+  margin: 50px;
+  padding: 30px;
+  flex: 1 1 auto;
+}
+
+
+.key-letter__ru{
+  width: 60px;
+  height: 60px;
+  border: 1px solid #919191;
+  border-radius: 100%;
+  margin: 3px;
+  padding: 3px;
+  float: left;
+  background: #e7f2f5;
+color: black;
+font-size: 32px;
+font-family: roboto, sans-serif;
+
+
+}
