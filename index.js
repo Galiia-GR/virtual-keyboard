@@ -19,30 +19,40 @@ function layout() {
 
   document.querySelector('.description').innerText = 'Клавиатура создана в операционной системе Windows';
 
-  document.querySelector('.change__lang').innerText = 'Для переключения языка комбинация: левыe shift + ctrl';
+  document.querySelector('.change__lang').innerText = 'Для переключения языка комбинация:левыe shift + ctrl';
 }
 
 layout();
 
 drawKeyboardRu();
 
+function removeActiveButton() {
+  document.querySelectorAll('.keyboard__key').forEach((el) => {
+    el.classList.remove('active');
+  });
+}
+
 function activeButton() {
+  const textarea = document.querySelector('.container__textarea');
+
   document.addEventListener('keypress', (event) => {
     document.querySelectorAll('.keyboard__key').forEach((el) => {
       el.classList.remove('active');
     });
-    document.querySelector('.container__textarea').focus();
+    textarea.focus();
     document.querySelector(`[data=${event.code}]`).classList.add('active');
+    setTimeout(removeActiveButton, 300);
   });
-
   document.querySelectorAll('.keyboard__key').forEach((item) => {
     item.addEventListener('click', (e) => {
       e.preventDefault();
       document.querySelectorAll('.keyboard__key').forEach((el) => {
         el.classList.remove('active');
       });
-      document.querySelector('.container__textarea').focus();
+      textarea.focus();
       e.target.classList.add('active');
+      textarea.value += e.target.innerText;
+      setTimeout(removeActiveButton, 300);
     });
   });
 }
