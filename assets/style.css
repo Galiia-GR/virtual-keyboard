@@ -4,6 +4,14 @@
   padding: 0;
 }
 
+@font-face {
+  font-family: "RobotoMono";
+  src: url("../assets/RobotoMono-Thin.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 body {
   background: url("./background.png");
   background-repeat: no-repeat;
@@ -20,7 +28,7 @@ body {
 }
 
 .container__textarea {
-  height: 300px;
+  height: 200px;
   width: 1000px;
   display: flex;
   align-self: center;
@@ -65,9 +73,10 @@ body {
   padding: 3px;
   float: left;
   background: #e7f2f5;
-  color: black;
+  color: #131212;
   font-size: 32px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "RobotoMono";
+  font-weight: bold;
   transition: bottom 0.4s;
   text-align: center;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
