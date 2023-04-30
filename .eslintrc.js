@@ -13,15 +13,5 @@ module.exports = {
   rules: {
     'import/extensions': 'off',
     'import/prefer-default-export': 'off',
-    'no-restricted-globals': 'off',
-    'no-undef': 'off',
-    'no-console': 'off',
-    'no-alert': 'off',
-    'max-len': [
-      'error',
-      {
-        ignoreComments: true,
-      },
-    ],
   },
 };

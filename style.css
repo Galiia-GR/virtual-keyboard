@@ -87,6 +87,18 @@
   transform: translate3d(0, 2px, -2px);
 }
 
+
+.active{
+  cursor: pointer;
+  background-color: #61bdd4;
+  border: none;
+  transform: translate3d(0, 2px, -2px)
+}
+
+.active:hover{
+  background-color: #61bdd4;
+}
+
 .special__tab,
 .special__del,
 .special__alt-left,
