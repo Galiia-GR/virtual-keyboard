@@ -20,44 +20,162 @@ function layout() {
   document.querySelector('.description').innerText = 'Клавиатура создана в операционной системе Windows';
 
   document.querySelector('.change__lang').innerText = 'Для переключения языка комбинация:левыe shift + ctrl';
+
+  document.querySelector('.container__textarea').autofocus = true;
 }
 
 layout();
 
-export function drawKeyboard() {
+function drawKeyboard() {
   let draw = '';
-  let lang;
+  const textarea = document.querySelector('.container__textarea');
+  // function changeLang() {
+  //   lang = localStorage.getItem('lang') || 'eng';
+  //   document.addEventListener('keydown', (event) => {
+  //     if (event.code === 'ShiftLeft' && event.code === 'ControlLeft') {
+  //       lang = lang === 'eng' ? 'lit' : 'eng';
+  //       localStorage.setItem('lang', lang);
+  //       console.log(localStorage);
+  //     }
+  //   });
+  // }
 
-  function changeLang() {
-    lang = localStorage.getItem('lang') || 'eng';
-    document.addEventListener('keydown', (event) => {
-      if (event.code === 'ShiftLeft' && event.code === 'ControlLeft') {
-        lang = lang === 'eng' ? 'lit' : 'eng';
-        localStorage.setItem('lang', lang);
-        console.log(localStorage);
-      }
-    });
-  }
-
-  changeLang();
   for (let i = 0; i < keyLetters.length; i += 1) {
     draw += `<div class = "keyboard__key" data = ${keyLetters[i][0]} >
     ${keyLetters[i][1]}</div>`;
   }
-
   document.querySelector('.keyboard').innerHTML = draw;
 
-  //   const keyboard = document.querySelectorAll('.keyboard__key');
+  const keyboard = document.querySelectorAll('.keyboard__key');
 
-  //  for (let i = 0; i < keyboard.length; i += 1) {
-  //    keyboard[i].innerText = `${keyletters[i][2]}`;
-  //  }
+  document.addEventListener('keydown', (event) => {
+    if (event.code === 'CapsLock') {
+      document.querySelector('.special__caps').classList.add('special__active');
+      for (let i = 0; i < keyboard.length; i += 1) {
+        keyboard[i].innerText = `${keyLetters[i][2]}`;
+      }
+    } else if (event.code === 'ShiftLeft') {
+      document.querySelector('.special__shift-left').classList.add('special__active');
+      for (let i = 0; i < keyboard.length; i += 1) {
+        keyboard[i].innerText = `${keyLetters[i][2]}`;
+      }
+    } else if (event.code === 'ShiftRight') {
+      document.querySelector('.special__shift-right').classList.add('special__active');
+      for (let i = 0; i < keyboard.length; i += 1) {
+        keyboard[i].innerText = `${keyLetters[i][2]}`;
+      }
+    } else if (event.code === 'ControlLeft') {
+      document.querySelector('.special__ctrl-left').classList.add('special__active');
+    } else if (event.code === 'AltLeft') {
+      textarea.focus();
+      document.querySelector('.special__alt-left').classList.add('special__active');
+    } else if (event.code === 'ControlRight') {
+      document.querySelector('.special__ctrl-right').classList.add('special__active');
+    } else if (event.code === 'AltRight') {
+      event.preventDefault();
+      textarea.focus();
+      document.querySelector('.special__alt-right').classList.add('special__active');
+    } else if (event.code === 'ArrowUp') {
+      textarea.focus();
+      textarea.value += document.querySelector(`[data=${event.code}]`).innerText;
+      document.querySelector('.special__arrow-up').classList.add('special__active');
+    } else if (event.code === 'ArrowLeft') {
+      event.preventDefault();
+      textarea.focus();
+      textarea.value += document.querySelector(`[data=${event.code}]`).innerText;
+      document.querySelector('.special__arrow-left').classList.add('special__active');
+    } else if (event.code === 'ArrowRight') {
+      textarea.focus();
+      textarea.value += document.querySelector(`[data=${event.code}]`).innerText;
+      document.querySelector('.special__arrow-right').classList.add('special__active');
+    } else if (event.code === 'ArrowDown') {
+      textarea.focus();
+      textarea.value += document.querySelector(`[data=${event.code}]`).innerText;
+      document.querySelector('.special__arrow-down').classList.add('special__active');
+    } else if (event.code === 'Space') {
+      document.querySelector('.special__space').classList.add('special__active');
+    } else if (event.code === 'Enter') {
+      document.querySelector('.special__enter').classList.add('special__active');
+    } else if (event.code === 'Tab') {
+      event.preventDefault();
+      textarea.focus();
+      textarea.value += '\t';
+      document.querySelector('.special__tab').classList.add('special__active');
+    } else if (event.code === 'Backspace') {
+      document.querySelector('.special__backspase').classList.add('special__active');
+    } else if (event.code === 'Del') {
+      event.preventDefault();
+      textarea.focus();
+      textarea.value += `${textarea.value.slice(0, 1)}`;
+      document.querySelector('.special__del').classList.add('special__active');
+    } else if (event.code === 'Win') {
+      document.querySelector('.special__win').classList.add('special__active');
+      event.preventDefault();
+      textarea.focus();
+    }
+  });
+
+  document.addEventListener('keyup', (event) => {
+    if (event.code === 'CapsLock') {
+      document.querySelector('.special__caps').classList.remove('special__active');
+      event.preventDefault();
+      for (let i = 0; i < keyboard.length; i += 1) {
+        keyboard[i].innerText = `${keyLetters[i][1]}`;
+      }
+    } else if (event.code === 'ShiftLeft') {
+      document.querySelector('.special__shift-left').classList.remove('special__active');
+      for (let i = 0; i < keyboard.length; i += 1) {
+        keyboard[i].innerText = `${keyLetters[i][1]}`;
+      }
+    } else if (event.code === 'ShiftRight') {
+      document.querySelector('.special__shift-right').classList.remove('special__active');
+      for (let i = 0; i < keyboard.length; i += 1) {
+        keyboard[i].innerText = `${keyLetters[i][1]}`;
+      }
+    } else if (event.code === 'ControlLeft') {
+      document.querySelector('.special__ctrl-left').classList.remove('special__active');
+    } else if (event.code === 'AltLeft') {
+      event.preventDefault();
+      textarea.focus();
+      document.querySelector('.special__alt-left').classList.remove('special__active');
+    } else if (event.code === 'ControlRight') {
+      document.querySelector('.special__ctrl-right').classList.remove('special__active');
+    } else if (event.code === 'AltRight') {
+      event.preventDefault();
+      textarea.focus();
+      document.querySelector('.special__alt-right').classList.remove('special__active');
+    } else if (event.code === 'ArrowUp') {
+      document.querySelector('.special__arrow-up').classList.remove('special__active');
+    } else if (event.code === 'ArrowLeft') {
+      document.querySelector('.special__arrow-left').classList.remove('special__active');
+    } else if (event.code === 'ArrowRight') {
+      document.querySelector('.special__arrow-right').classList.remove('special__active');
+    } else if (event.code === 'ArrowDown') {
+      document.querySelector('.special__arrow-down').classList.remove('special__active');
+    } else if (event.code === 'Space') {
+      document.querySelector('.special__space').classList.remove('special__active');
+    } else if (event.code === 'Enter') {
+      document.querySelector('.special__enter').classList.remove('special__active');
+    } else if (event.code === 'Tab') {
+      event.preventDefault();
+      textarea.focus();
+      document.querySelector('.special__tab').classList.remove('special__active');
+    } else if (event.code === 'Backspace') {
+      document.querySelector('.special__backspase').classList.remove('special__active');
+    } else if (event.code === 'Del') {
+      event.preventDefault();
+      textarea.focus();
+      document.querySelector('.special__del').classList.remove('special__active');
+    } else if (event.code === 'Win') {
+      document.querySelector('.special__win').classList.remove('special__active');
+    }
+  });
 
   const controlLeft = document.querySelector('[data="ControlLeft"]');
   controlLeft.classList.add('special__ctrl-left');
 
-  const ControlRight = document.querySelector('[data="ControlRight"]');
-  ControlRight.classList.add('special__ctrl-right');
+  const controlRight = document.querySelector('[data="ControlRight"]');
+  controlRight.classList.add('special__ctrl-right');
 
   const altLeft = document.querySelector('[data="AltLeft"]');
   altLeft.classList.add('special__alt-left');

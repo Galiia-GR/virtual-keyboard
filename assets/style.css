@@ -34,12 +34,14 @@ body {
   align-self: center;
   margin: 40px;
   flex: 1 1 auto;
+  font-size: 18px;
   background: transparent;
 }
 
 .keyboard__title {
   font-size: 32px;
   text-align: center;
+  color: #1C879D;
 }
 
 .change__lang,
@@ -74,7 +76,7 @@ body {
   float: left;
   background: #e7f2f5;
   color: #131212;
-  font-size: 32px;
+  font-size: 28px;
   font-family: "RobotoMono";
   font-weight: bold;
   transition: bottom 0.4s;
@@ -114,7 +116,7 @@ body {
 .special__arrow-right,
 .special__arrow-up,
 .special__arrow-down {
-  font-size: 16px;
+  font-size: 12px;
   background-color: #e2e2e2;
 }
 
@@ -134,4 +136,9 @@ body {
   border-radius: 15px;
   background-color: #e2e2e2;
   width: 440px;
+}
+
+.special__active {
+  border: none;
+  background-color: #61bdd4;
 }
