@@ -1,68 +1,68 @@
 const keyletters = [
-  ['Backquote', 'ё', 'Ё'],
-  ['Digit1', '1', '!'],
-  ['Digit2', '2', '"'],
-  ['Digit3', '3', '№'],
-  ['Digit4', '4', ';'],
-  ['Digit5', '5', '%'],
-  ['Digit6', '6', ':'],
-  ['Digit7', '7', '?'],
-  ['Digit8', '8', '*'],
-  ['Digit9', '9', '('],
-  ['Digit0', '0', ')'],
-  ['Minus', '-', '_'],
-  ['Equal', '=', '+'],
-  ['Backspace', '&#8592; Backspace', '&#8592 Backspace'],
-  ['Tab', '&#8677; Tab', '&#8677; Tab'],
-  ['KeyQ', 'й', 'Й'],
-  ['KeyW', 'ц', 'Ц'],
-  ['KeyE', 'у', 'У'],
-  ['KeyR', 'к', 'К'],
-  ['KeyT', 'е', 'Е'],
-  ['KeyY', 'н', 'Н'],
-  ['KeyU', 'г', 'Г'],
-  ['KeyI', 'ш', 'Ш'],
-  ['KeyO', 'щ', 'Щ'],
-  ['KeyP', 'з', 'З'],
-  ['BracketLeft', 'х', 'Х'],
-  ['BracketRight', 'ъ', 'Ъ'],
-  ['Backslash', '\\', '|'],
-  ['Del', 'Del', 'Del'],
-  ['CapsLock', 'CapsLock &#8682;', 'CapsLock &#8682;'],
-  ['KeyA', 'ф', 'Ф'],
-  ['KeyS', 'ы', 'Ы'],
-  ['KeyD', 'в', 'В'],
-  ['KeyF', 'а', 'А'],
-  ['KeyG', 'п', 'П'],
-  ['KeyH', 'р', 'Р'],
-  ['KeyJ', 'о', 'О'],
-  ['KeyK', 'л', 'Л'],
-  ['KeyL', 'д', 'Д'],
-  ['Semicolon', 'ж', 'Ж'],
-  ['Quote', 'э', 'Э'],
-  ['Enter', 'Enter &#8626;', 'Enter &#8626;'],
-  ['ShiftLeft', '&#8679; Shift', '&#8679; Shift'],
-  ['KeyZ', 'я', 'Я'],
-  ['KeyX', 'ч', 'Ч'],
-  ['KeyC', 'с', 'С'],
-  ['KeyV', 'м', 'М'],
-  ['KeyB', 'и', 'И'],
-  ['KeyN', 'т', 'Т'],
-  ['KeyM', 'ь', 'Ь'],
-  ['Comma', 'б', 'Б'],
-  ['Dot', 'ю', 'Ю'],
-  ['Slash', '.', ','],
-  ['ArrowUp', '▲', '▲'],
-  ['ShiftRight', '&#8679; Shift', '&#8679; Shift'],
-  ['ControlLeft', 'ctrl', 'ctrl'],
-  ['Win', 'Win', 'Win'],
-  ['AltLeft', 'alt', 'alt'],
-  ['Space', ' ', ' '],
-  ['AltRight', 'alt', 'alt'],
-  ['ArrowLeft', '◄', '◄'],
-  ['ArrowDown', '▼', '▼'],
-  ['ArrowRight', '►', '►'],
-  ['ControlRight', 'ctrl', 'ctrl'],
+  ['Backquote', 'ё', 'Ё', '`', '~'],
+  ['Digit1', '1', '!', '1', '!'],
+  ['Digit2', '2', '"', '2', '@'],
+  ['Digit3', '3', '№', '3', '#'],
+  ['Digit4', '4', ';', '4', '$'],
+  ['Digit5', '5', '%', '5', '%'],
+  ['Digit6', '6', ':', '6', '^'],
+  ['Digit7', '7', '?', '7', '&'],
+  ['Digit8', '8', '*', '8', '*'],
+  ['Digit9', '9', '(', '9', '('],
+  ['Digit0', '0', ')', '0', ')'],
+  ['Minus', '-', '_', '-', '_'],
+  ['Equal', '=', '+', '=', '+'],
+  ['Backspace', 'Backspace', 'Backspace', 'Backspace', 'Backspace'],
+  ['Tab', 'Tab', 'Tab', 'Tab', 'Tab'],
+  ['KeyQ', 'й', 'Й', 'q', 'Q'],
+  ['KeyW', 'ц', 'Ц', 'w', 'W'],
+  ['KeyE', 'у', 'У', 'e', 'E'],
+  ['KeyR', 'к', 'К', 'r', 'R'],
+  ['KeyT', 'е', 'Е', 't', 'T'],
+  ['KeyY', 'н', 'Н', 'y', 'Y'],
+  ['KeyU', 'г', 'Г', 'u', 'U'],
+  ['KeyI', 'ш', 'Ш', 'i', 'I'],
+  ['KeyO', 'щ', 'Щ', 'o', 'O'],
+  ['KeyP', 'з', 'З', 'p', 'P'],
+  ['BracketLeft', 'х', 'Х', '[', '{'],
+  ['BracketRight', 'ъ', 'Ъ', ']', '}'],
+  ['Backslash', '\\', '|', '\\', '|'],
+  ['Del', 'Del', 'Del', 'Del', 'Del'],
+  ['CapsLock', 'CapsLock', 'CapsLock', 'CapsLock', 'CapsLock'],
+  ['KeyA', 'ф', 'Ф', 'a', 'A'],
+  ['KeyS', 'ы', 'Ы', 's', 'S'],
+  ['KeyD', 'в', 'В', 'd', 'D'],
+  ['KeyF', 'а', 'А', 'f', 'F'],
+  ['KeyG', 'п', 'П', 'g', 'G'],
+  ['KeyH', 'р', 'Р', 'h', 'H'],
+  ['KeyJ', 'о', 'О', 'j', 'J'],
+  ['KeyK', 'л', 'Л', 'k', 'K'],
+  ['KeyL', 'д', 'Д', 'l', 'L'],
+  ['Semicolon', 'ж', 'Ж', ';', ':'],
+  ['Quote', 'э', 'Э', "'", '"'],
+  ['Enter', 'Enter', 'Enter', 'Enter', 'Enter'],
+  ['ShiftLeft', 'Shift', 'Shift', 'Shift', 'Shift'],
+  ['KeyZ', 'я', 'Я', 'z', 'Z'],
+  ['KeyX', 'ч', 'Ч', 'x', 'X'],
+  ['KeyC', 'с', 'С', 'c', 'C'],
+  ['KeyV', 'м', 'М', 'v', 'V'],
+  ['KeyB', 'и', 'И', 'b', 'B'],
+  ['KeyN', 'т', 'Т', 'n', 'N'],
+  ['KeyM', 'ь', 'Ь', 'm', 'M'],
+  ['Comma', 'б', 'Б', ',', '<'],
+  ['Dot', 'ю', 'Ю', '.', '>'],
+  ['Slash', '.', ',', '/', '?'],
+  ['ArrowUp', '▲', '▲', '▲', '▲'],
+  ['ShiftRight', 'Shift', 'Shift', 'Shift', 'Shift'],
+  ['ControlLeft', 'ctrl', 'ctrl', 'ctrl', 'ctrl'],
+  ['Win', 'Win', 'Win', 'Win', 'Win'],
+  ['AltLeft', 'alt', 'alt', 'alt', 'alt'],
+  ['Space', ' ', ' ', ' ', ' '],
+  ['AltRight', 'alt', 'alt', 'alt', 'alt'],
+  ['ArrowLeft', '◄', '◄', '◄', '◄'],
+  ['ArrowDown', '▼', '▼', '▼', '▼'],
+  ['ArrowRight', '►', '►', '►', '►'],
+  ['ControlRight', 'ctrl', 'ctrl', 'ctrl', 'ctrl'],
 ];
 
 export function drawKeyboardRu() {
@@ -75,13 +75,11 @@ export function drawKeyboardRu() {
 
   document.querySelector('.keyboard').innerHTML = draw;
 
-  // const keyboard = document.querySelectorAll('.keyboard__key');
+  //   const keyboard = document.querySelectorAll('.keyboard__key');
 
-  // for (let i = 0; i < keyboard.length; i += 1) {
-  //   for (let j = 0; j < keyboard.length; j += 1) {
-  //     console.log(keyletterRu[i][j][2]);
-  //   }
-  // }
+  //  for (let i = 0; i < keyboard.length; i += 1) {
+  //    keyboard[i].innerText = `${keyletters[i][2]}`;
+  //  }
 
   const controlLeft = document.querySelector('[data="ControlLeft"]');
   controlLeft.classList.add('special__ctrl-left');
@@ -134,3 +132,13 @@ export function drawKeyboardRu() {
   const arrowDown = document.querySelector('[data="ArrowDown"]');
   arrowDown.classList.add('special__arrow-down');
 }
+
+// /*function changeLanguage() {
+//   let lang = localStorage.getItem('lang') || 'eng';
+//   document.addEventListener('keydown', (event) => {
+//     if (event.code === 'AltLeft' && event.code === 'ControlLeft') {
+//       lang = lang === 'eng' ? 'lit' : 'eng';
+//       localStorage.setItem('lang', lang);
+//     }
+//   });
+// }*/
