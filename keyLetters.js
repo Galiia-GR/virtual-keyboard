@@ -27,7 +27,7 @@ export const keyLetters = [
   ['BracketLeft', 'х', 'Х', '[', '{'],
   ['BracketRight', 'ъ', 'Ъ', ']', '}'],
   ['Backslash', '\\', '|', '\\', '|'],
-  ['Del', 'Del', 'Del', 'Del', 'Del'],
+  ['Cap', 'Ru', 'Ru', 'Eng', 'Eng'],
   ['CapsLock', 'CapsLock', 'CapsLock', 'CapsLock', 'CapsLock'],
   ['KeyA', 'ф', 'Ф', 'a', 'A'],
   ['KeyS', 'ы', 'Ы', 's', 'S'],
