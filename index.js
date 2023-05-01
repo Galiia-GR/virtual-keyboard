@@ -43,6 +43,7 @@ function activeButton() {
     document.querySelector(`[data=${event.code}]`).classList.add('active');
     setTimeout(removeActiveButton, 300);
   });
+  /// ///click/////
   document.querySelectorAll('.keyboard__key').forEach((item) => {
     item.addEventListener('click', (e) => {
       e.preventDefault();
@@ -55,6 +56,26 @@ function activeButton() {
       setTimeout(removeActiveButton, 300);
     });
   });
+
+  // let capsKey = false;
+  // document.addEventListener('keydown', (event) => {
+  //   event.preventDefault();
+  //   textarea.focus();
+  //   document.querySelectorAll('.keyboard__key').forEach((el, i) => {
+  //     if (event.getModifierState('CapsLock')) {
+  //       capsKey = true;
+  //       console.log(capsKey);
+  //       document
+  //         .querySelector('.special__caps')
+  //         .classList.add('special__active');
+  //     } else {
+  //       textarea.focus();
+  //       el.classList.add('active');
+  //       textarea.value += el.innerText;
+  //       setTimeout(removeActiveButton, 300);
+  //     }
+  //   });
+  // });
 }
 
 activeButton();
