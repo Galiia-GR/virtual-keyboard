@@ -90,23 +90,30 @@ body {
 
 .keyboard__key:hover {
   cursor: pointer;
-  background-color: #e2e2e2;
+  border: none;
+  background-color: #61bdd4;
   transform: translate3d(0, 2px, -2px);
 }
 
 .active {
   cursor: pointer;
-  background-color: #61bdd4;
   border: none;
+  background-color: #61bdd4;
   transform: translate3d(0, 2px, -2px);
 }
 
 .active:hover {
   background-color: #61bdd4;
+  transform: translate3d(0, 2px, -2px);
+}
+
+.langChange{
+  background-color: #61bdd4;
+  transform: translate3d(0, 2px, -2px);
 }
 
 .special__tab,
-.special__del,
+.special__lng,
 .special__alt-left,
 .special__alt-right,
 .special__ctrl-left,
@@ -136,14 +143,4 @@ body {
   border-radius: 15px;
   background-color: #e2e2e2;
   width: 440px;
-}
-
-.special__active {
-  border: none;
-  background-color: #61bdd4;
-}
-
-.special__active-caps {
-  border: none;
-  background-color: #61bdd4;
 }
