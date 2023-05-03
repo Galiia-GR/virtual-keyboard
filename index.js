@@ -38,12 +38,80 @@ function drawKeyboard() {
 
   const keyboard = document.querySelectorAll('.keyboard__key');
 
+  function addSpecButtons() {
+    const controlLeft = document.querySelector('[data="ControlLeft"]');
+    controlLeft.classList.add('special__ctrl-left');
+    controlLeft.innerText = 'Ctrl';
+
+    const controlRight = document.querySelector('[data="ControlRight"]');
+    controlRight.classList.add('special__ctrl-right');
+    controlRight.innerText = 'Ctrl';
+
+    const altLeft = document.querySelector('[data="AltLeft"]');
+    altLeft.classList.add('special__alt-left');
+    altLeft.innerText = 'Alt';
+
+    const altRight = document.querySelector('[data="AltRight"]');
+    altRight.classList.add('special__alt-right');
+    altRight.innerText = 'Alt';
+
+    const shiftLeft = document.querySelector('[data="ShiftLeft"]');
+    shiftLeft.classList.add('special__shift-left');
+    shiftLeft.innerText = 'Shift';
+
+    const shiftRight = document.querySelector('[data="ShiftRight"]');
+    shiftRight.classList.add('special__shift-right');
+    shiftRight.innerText = 'Shift';
+
+    const win = document.querySelector('[data="Win"]');
+    win.classList.add('special__win');
+    win.innerText = 'Win';
+
+    const enter = document.querySelector('[data="Enter"]');
+    enter.classList.add('special__enter');
+    enter.innerText = 'Enter';
+
+    const tab = document.querySelector('[data="Tab"]');
+    tab.classList.add('special__tab');
+    tab.innerText = 'Tab';
+
+    const backspase = document.querySelector('[data="Backspace"]');
+    backspase.classList.add('special__backspase');
+    backspase.innerText = 'Backspace';
+
+    const capsLock = document.querySelector('[data="CapsLock"]');
+    capsLock.classList.add('special__caps');
+    capsLock.innerHTML = 'CapsLock';
+
+    const del = document.querySelector('[data="Cap"]');
+    del.classList.add('special__del');
+    del.innerHTML = 'Del';
+
+    const space = document.querySelector('[data="Space"]');
+    space.classList.add('special__space');
+
+    const arrowUp = document.querySelector('[data="ArrowUp"]');
+    arrowUp.classList.add('special__arrow-up');
+
+    const arrowleft = document.querySelector('[data="ArrowLeft"]');
+    arrowleft.classList.add('special__arrow-left');
+
+    const arrowRight = document.querySelector('[data="ArrowRight"]');
+    arrowRight.classList.add('special__arrow-right');
+
+    const arrowDown = document.querySelector('[data="ArrowDown"]');
+    arrowDown.classList.add('special__arrow-down');
+  }
+
+  addSpecButtons();
+
   document.addEventListener('keydown', (event) => {
     if (event.code === 'CapsLock') {
       document.querySelector('.special__caps').classList.add('special__active');
       for (let i = 0; i < keyboard.length; i += 1) {
         keyboard[i].innerText = `${keyLetters[i][2]}`;
       }
+      addSpecButtons();
     } else if (event.code === 'ShiftLeft') {
       document.querySelector('.special__shift-left').classList.add('special__active');
       for (let i = 0; i < keyboard.length; i += 1) {
@@ -112,6 +180,7 @@ function drawKeyboard() {
       for (let i = 0; i < keyboard.length; i += 1) {
         keyboard[i].innerText = `${keyLetters[i][1]}`;
       }
+      addSpecButtons();
     } else if (event.code === 'ShiftLeft') {
       document.querySelector('.special__shift-left').classList.remove('special__active');
       for (let i = 0; i < keyboard.length; i += 1) {
@@ -160,57 +229,6 @@ function drawKeyboard() {
       document.querySelector('.special__win').classList.remove('special__active');
     }
   });
-
-  const controlLeft = document.querySelector('[data="ControlLeft"]');
-  controlLeft.classList.add('special__ctrl-left');
-
-  const controlRight = document.querySelector('[data="ControlRight"]');
-  controlRight.classList.add('special__ctrl-right');
-
-  const altLeft = document.querySelector('[data="AltLeft"]');
-  altLeft.classList.add('special__alt-left');
-
-  const altRight = document.querySelector('[data="AltRight"]');
-  altRight.classList.add('special__alt-right');
-
-  const shiftLeft = document.querySelector('[data="ShiftLeft"]');
-  shiftLeft.classList.add('special__shift-left');
-
-  const shiftRight = document.querySelector('[data="ShiftRight"]');
-  shiftRight.classList.add('special__shift-right');
-
-  const win = document.querySelector('[data="Win"]');
-  win.classList.add('special__win');
-
-  const enter = document.querySelector('[data="Enter"]');
-  enter.classList.add('special__enter');
-
-  const tab = document.querySelector('[data="Tab"]');
-  tab.classList.add('special__tab');
-
-  const backspase = document.querySelector('[data="Backspace"]');
-  backspase.classList.add('special__backspase');
-
-  const capsLock = document.querySelector('[data="CapsLock"]');
-  capsLock.classList.add('special__caps');
-
-  const del = document.querySelector('[data="Cap"]');
-  del.classList.add('special__del');
-
-  const space = document.querySelector('[data="Space"]');
-  space.classList.add('special__space');
-
-  const arrowUp = document.querySelector('[data="ArrowUp"]');
-  arrowUp.classList.add('special__arrow-up');
-
-  const arrowleft = document.querySelector('[data="ArrowLeft"]');
-  arrowleft.classList.add('special__arrow-left');
-
-  const arrowRight = document.querySelector('[data="ArrowRight"]');
-  arrowRight.classList.add('special__arrow-right');
-
-  const arrowDown = document.querySelector('[data="ArrowDown"]');
-  arrowDown.classList.add('special__arrow-down');
 
   keyboard.forEach((el) => {
     el.addEventListener('mousedown', (event) => {
