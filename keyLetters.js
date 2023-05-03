@@ -27,7 +27,7 @@ export const keyLetters = [
   ['BracketLeft', 'х', 'Х', '[', '{'],
   ['BracketRight', 'ъ', 'Ъ', ']', '}'],
   ['Backslash', '\\', '|', '\\', '|'],
-  ['Cap', 'Ru', 'Ru', 'Eng', 'Eng'],
+  ['lng', '', '', '', ''],
   ['CapsLock', '', '', '', ''],
   ['KeyA', 'ф', 'Ф', 'a', 'A'],
   ['KeyS', 'ы', 'Ы', 's', 'S'],
@@ -56,13 +56,13 @@ export const keyLetters = [
   ['ShiftRight', '', '', '', ''],
   ['ControlLeft', '', '', '', ''],
   ['Win', '', '', '', ''],
-  ['AltLeft', 'alt', '', '', ''],
+  ['AltLeft', '', '', '', ''],
   ['Space', ' ', ' ', ' ', ' '],
-  ['AltRight', 'alt', '', '', ''],
+  ['AltRight', '', '', '', ''],
   ['ArrowLeft', '◄', '◄', '◄', '◄'],
   ['ArrowDown', '▼', '▼', '▼', '▼'],
   ['ArrowRight', '►', '►', '►', '►'],
-  ['ControlRight', 'ctrl', '', '', ''],
+  ['ControlRight', '', '', '', ''],
 ];
 
 export default keyLetters;
