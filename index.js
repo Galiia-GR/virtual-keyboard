@@ -19,7 +19,7 @@ function layout() {
 
   document.querySelector('.description').innerText = 'Клавиатура создана в операционной системе Windows';
 
-  document.querySelector('.change__lang').innerText = 'Для переключения языка:Ru';
+  document.querySelector('.change__lang').innerText = 'Для переключения языка:Ru/Eng';
 
   document.querySelector('.container__textarea').autofocus = true;
 }
@@ -28,31 +28,36 @@ layout();
 
 function drawKeyboard() {
   let draw = '';
+  let lang;
   const textarea = document.querySelector('.container__textarea');
 
-  const lang = 'Eng';
+  function changelangRu() {
+    localStorage.setItem(lang, 'Ru');
+  }
 
-  function langRu() {
-    for (let i = 0; i < keyLetters.length; i += 1) {
-      draw += `<div class = "keyboard__key" data = ${keyLetters[i][0]} >
-    ${keyLetters[i][1]}</div>`;
+  function changelangEng() {
+    localStorage.setItem(lang, 'Eng');
+  }
+
+  async function firstLettersLayout() {
+    lang = localStorage.getItem(lang);
+    if (lang === 'Ru') {
+      for (let i = 0; i < keyLetters.length; i += 1) {
+        draw += `<div class = "keyboard__key" data = ${keyLetters[i][0]} >
+        ${keyLetters[i][1]}</div>`;
+      }
+      document.querySelector('.keyboard').innerHTML = draw;
+      changelangRu();
+    } else {
+      for (let i = 0; i < keyLetters.length; i += 1) {
+        draw += `<div class = "keyboard__key" data = ${keyLetters[i][0]} >
+        ${keyLetters[i][3]}</div>`;
+      }
+      document.querySelector('.keyboard').innerHTML = draw;
+      changelangEng();
     }
-    document.querySelector('.keyboard').innerHTML = draw;
   }
-
-  function langEng() {
-    for (let i = 0; i < keyLetters.length; i += 1) {
-      draw += `<div class = "keyboard__key" data = ${keyLetters[i][0]} >
-     ${keyLetters[i][3]}</div>`;
-    }
-    document.querySelector('.keyboard').innerHTML = draw;
-  }
-
-  if (lang === 'Ru') {
-    langRu();
-  } else {
-    langEng();
-  }
+  firstLettersLayout();
 
   function addSpecButtons() {
     const controlLeft = document.querySelector('[data="ControlLeft"]');
@@ -113,7 +118,7 @@ function drawKeyboard() {
     const lng = document.querySelector('[data="lng"]');
     lng.classList.add('special__lng');
     lng.classList.add('special');
-    lng.innerHTML = 'lng';
+    lng.innerHTML = 'Ru/Eng';
 
     const space = document.querySelector('[data="Space"]');
     space.classList.add('special');
@@ -137,37 +142,44 @@ function drawKeyboard() {
   }
 
   addSpecButtons();
-
   const keyboard = document.querySelectorAll('.keyboard__key');
+
+  function lettersUp() {
+    for (let i = 0; i < keyboard.length; i += 1) {
+      keyboard[i].innerText = `${keyboard[i].innerText.toUpperCase()}`;
+    }
+  }
+
+  function lettersDown() {
+    for (let i = 0; i < keyboard.length; i += 1) {
+      keyboard[i].innerText = `${keyboard[i].innerText.toLowerCase()}`;
+    }
+  }
 
   document.addEventListener('keydown', (event) => {
     if (event.code === 'CapsLock') {
       document.querySelector('.special__caps').classList.add('active');
-      for (let i = 0; i < keyboard.length; i += 1) {
-        keyboard[i].innerText = `${keyLetters[i][2]}`;
-      }
       event.preventDefault();
       textarea.focus();
+      lettersUp();
       addSpecButtons();
     } else if (event.code === 'ShiftLeft') {
       document.querySelector('.special__shift-left').classList.add('active');
-      for (let i = 0; i < keyboard.length; i += 1) {
-        keyboard[i].innerText = `${keyLetters[i][2]}`;
-      }
+      document.querySelector('.special__shift-left').classList.add('langChange');
       event.preventDefault();
       textarea.focus();
+      lettersUp();
       addSpecButtons();
     } else if (event.code === 'ShiftRight') {
       document.querySelector('.special__shift-right').classList.add('active');
-      for (let i = 0; i < keyboard.length; i += 1) {
-        keyboard[i].innerText = `${keyLetters[i][2]}`;
-      }
       event.preventDefault();
       textarea.focus();
+      lettersUp();
       addSpecButtons();
     } else if (event.code === 'ControlLeft') {
       event.preventDefault();
       textarea.focus();
+      document.querySelector('.special__shift-left').classList.add('langChange');
       document.querySelector('.special__ctrl-left').classList.add('active');
     } else if (event.code === 'AltLeft') {
       event.preventDefault();
@@ -221,10 +233,6 @@ function drawKeyboard() {
       textarea.focus();
       textarea.value = textarea.value.replace(/.$/, '');
       document.querySelector('.special__backspase').classList.add('active');
-    } else if (event.code === 'Cap') {
-      event.preventDefault();
-      textarea.focus();
-      document.querySelector('.special__lng').classList.add('active');
     } else if (event.code === 'Win') {
       event.preventDefault();
       textarea.focus();
@@ -235,27 +243,21 @@ function drawKeyboard() {
   document.addEventListener('keyup', (event) => {
     if (event.code === 'CapsLock') {
       document.querySelector('.special__caps').classList.remove('active');
-      for (let i = 0; i < keyboard.length; i += 1) {
-        keyboard[i].innerText = `${keyLetters[i][1]}`;
-      }
       event.preventDefault();
       textarea.focus();
+      lettersDown();
       addSpecButtons();
     } else if (event.code === 'ShiftLeft') {
       document.querySelector('.special__shift-left').classList.remove('active');
-      for (let i = 0; i < keyboard.length; i += 1) {
-        keyboard[i].innerText = `${keyLetters[i][1]}`;
-      }
       event.preventDefault();
       textarea.focus();
+      lettersDown();
       addSpecButtons();
     } else if (event.code === 'ShiftRight') {
       document.querySelector('.special__shift-right').classList.remove('active');
-      for (let i = 0; i < keyboard.length; i += 1) {
-        keyboard[i].innerText = `${keyLetters[i][1]}`;
-      }
       event.preventDefault();
       textarea.focus();
+      lettersDown();
       addSpecButtons();
     } else if (event.code === 'ControlLeft') {
       event.preventDefault();
@@ -309,10 +311,6 @@ function drawKeyboard() {
       event.preventDefault();
       textarea.focus();
       document.querySelector('.special__backspase').classList.remove('active');
-    } else if (event.code === 'lng') {
-      event.preventDefault();
-      textarea.focus();
-      document.querySelector('.special__lng').classList.remove('active');
     } else if (event.code === 'Win') {
       event.preventDefault();
       textarea.focus();
@@ -323,35 +321,29 @@ function drawKeyboard() {
   keyboard.forEach((el) => {
     el.addEventListener('mousedown', (event) => {
       if (el.classList.contains('special__caps')) {
-        document.querySelector('.special__caps').classList.add('active');
-        for (let i = 0; i < keyboard.length; i += 1) {
-          keyboard[i].innerText = `${keyLetters[i][2]}`;
-        }
         event.preventDefault();
         textarea.focus();
+        lettersUp();
         addSpecButtons();
       } else if (el.classList.contains('special__shift-right')) {
         document.querySelector('.special__shift-right').classList.add('active');
-        for (let i = 0; i < keyboard.length; i += 1) {
-          keyboard[i].innerText = `${keyLetters[i][2]}`;
-        }
         event.preventDefault();
         textarea.focus();
+        lettersUp();
         addSpecButtons();
       } else if (el.classList.contains('special__shift-left')) {
         document.querySelector('.special__shift-left').classList.add('active');
-        for (let i = 0; i < keyboard.length; i += 1) {
-          keyboard[i].innerText = `${keyLetters[i][2]}`;
-        }
         event.preventDefault();
         textarea.focus();
+        lettersUp();
         addSpecButtons();
       } else if (el.classList.contains('special__lng')) {
-        document.querySelector('.special__lng').classList.add('active');
-        for (let i = 0; i < keyboard.length; i += 1) {
-          keyboard[i].innerText = `${keyLetters[i][3]}`;
-        }
+        document.querySelector('.special__lng').classList.add('langChange');
         event.preventDefault();
+        changelangRu();
+        for (let i = 0; i < keyboard.length; i += 1) {
+          keyboard[i].innerText = `${keyLetters[i][1]}`;
+        }
         textarea.focus();
         addSpecButtons();
       } else if (el.classList.contains('special__ctrl-left')) {
@@ -419,13 +411,47 @@ function drawKeyboard() {
       }
     });
   });
+
+  keyboard.forEach((el) => {
+    el.addEventListener('mouseup', (event) => {
+      if (el.classList.contains('special__caps')) {
+        event.preventDefault();
+        textarea.focus();
+        lettersDown();
+        addSpecButtons();
+      } else if (el.classList.contains('special__shift-right')) {
+        document.querySelector('.special__shift-right').classList.remove('active');
+        event.preventDefault();
+        textarea.focus();
+        lettersDown();
+        addSpecButtons();
+      } else if (el.classList.contains('special__shift-left')) {
+        document.querySelector('.special__shift-left').classList.remove('active');
+        event.preventDefault();
+        textarea.focus();
+        lettersDown();
+        addSpecButtons();
+      } else if (el.classList.contains('special__lng')) {
+        document.querySelector('.special__lng').classList.remove('langChange');
+        event.preventDefault();
+        for (let i = 0; i < keyboard.length; i += 1) {
+          keyboard[i].innerText = `${keyLetters[i][3]}`;
+        }
+        textarea.focus();
+        changelangEng();
+        addSpecButtons();
+      }
+    });
+  });
 }
 
 drawKeyboard();
 
 function removeActiveButton() {
   document.querySelectorAll('.keyboard__key').forEach((el) => {
-    el.classList.remove('active');
+    if (!el.classList.contains('special__caps')) {
+      el.classList.remove('active');
+    }
   });
 }
 
@@ -434,7 +460,9 @@ function activeButton() {
 
   document.addEventListener('keypress', (event) => {
     document.querySelectorAll('.keyboard__key').forEach((el) => {
-      el.classList.remove('active');
+      if (!(el.classList.contains('special__caps'))) {
+        el.classList.remove('active');
+      }
     });
     textarea.focus();
     document.querySelector(`[data=${event.code}]`).classList.add('active');
@@ -445,7 +473,9 @@ function activeButton() {
     item.addEventListener('click', (e) => {
       e.preventDefault();
       document.querySelectorAll('.keyboard__key').forEach((el) => {
-        el.classList.remove('active');
+        if (!(el.classList.contains('special__caps'))) {
+          el.classList.remove('active');
+        }
       });
       textarea.focus();
       e.target.classList.add('active');
